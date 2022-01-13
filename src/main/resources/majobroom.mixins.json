@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.innky.majobroom.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "majobroom.refmap.json",
+  "mixins": ["MinecraftMixin"],
+  "client": [
+    "MinecraftMixin"
+  ],
+  "minVersion": "0.8",
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
