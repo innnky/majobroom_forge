@@ -12,5 +12,6 @@ public class KeybindingRegistry {
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> ClientRegistry.registerKeyBinding(KeyBoardInput.UP_KEY));
         event.enqueueWork(() -> ClientRegistry.registerKeyBinding(KeyBoardInput.DOWN_KEY));
+        event.enqueueWork(() -> ClientRegistry.registerKeyBinding(KeyBoardInput.SUMMON_KEY));
     }
 }

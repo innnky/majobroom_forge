@@ -29,6 +29,13 @@ public class Networking {
                 RidePack::new,
                 RidePack::handler
         );
+        INSTANCE.registerMessage(
+                nextID(),
+                SummonBroomPack.class,
+                SummonBroomPack::toBytes,
+                SummonBroomPack::new,
+                SummonBroomPack::handler
+        );
 
     }
 }

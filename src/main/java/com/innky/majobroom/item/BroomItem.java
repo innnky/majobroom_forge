@@ -41,7 +41,7 @@ public class BroomItem extends Item {
                 }
 
                 worldIn.playSound(playerIn,playerIn.blockPosition(), SoundEvents.ENDER_EYE_LAUNCH, SoundSource.NEUTRAL, 10F,1f);
-                addParticle(worldIn,blockPos.getX(), blockPos.getY()+2.1, blockPos.getZ(), 30,2,1);
+                addParticle(worldIn,blockPos.getX()+0.5, blockPos.getY()+2.1, blockPos.getZ()+0.5, 30,2,1);
             }
 
         return InteractionResultHolder.success(itemStack);
@@ -66,13 +66,13 @@ public class BroomItem extends Item {
 //        return true;
 //    }
 
-    public void addParticle(Level world, double tx, double ty, double tz, int number, double width, double height){
+    public static void addParticle(Level world, double tx, double ty, double tz, int number, double width, double height){
         for (int i = 0; i<number; i++){
 //            System.out.println(1);
             double x = Math.random()*width-0.5*width;
             double y = Math.random()*height-0.5*height;
             double z = Math.random()*width-0.5*width;
-            world.addParticle(ParticleTypes.SMOKE,tx+x+0.5, ty+y, tz+z+0.5, 0,0,0);
+            world.addParticle(ParticleTypes.SMOKE,tx+x, ty+y, tz+z, 0,0,0);
         }
     }
 }
