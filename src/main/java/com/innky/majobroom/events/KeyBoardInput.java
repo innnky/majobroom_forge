@@ -31,7 +31,7 @@ public class KeyBoardInput {
             KeyConflictContext.IN_GAME,
             KeyModifier.NONE,
             InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_LEFT_CONTROL,
+            GLFW.GLFW_KEY_LEFT_SHIFT,
             "key.category.majobroom");
     public static final KeyMapping SUMMON_KEY = new KeyMapping("key.summon",
             KeyConflictContext.IN_GAME,
