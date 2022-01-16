@@ -275,6 +275,10 @@ public class MajoBroom extends Boat {
 
     @Override
     public void tick() {
+        Entity passenger = this.getFirstPassenger();
+        if (passenger instanceof Player player){
+            player.setShiftKeyDown(false);
+        }
         if (!level.isClientSide){
             entityData.set(configSpeed, Config.MAX_SPEED.get());
             entityData.set(configAdvancedMode,Config.ADVANCED_MODE.get());

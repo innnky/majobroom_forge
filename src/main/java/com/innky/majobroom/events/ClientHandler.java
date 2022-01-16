@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientHandler {
     @SubscribeEvent
     public static void entityMountHandler(EntityMountEvent event){
-        if(event.getEntityBeingMounted() instanceof MajoBroom) {
+        if(event.getEntityBeingMounted() instanceof MajoBroom broom && event.getWorldObj().isClientSide) {
             if (event.isMounting()) {
 
                 if(Minecraft.getInstance().player != null) {
@@ -22,7 +22,8 @@ public class ClientHandler {
                         if (Config.AUTO_PERSPECTIVE.get()) {
                             Minecraft.getInstance().options.setCameraType(CameraType.THIRD_PERSON_BACK);
                         }
-                        Minecraft.getInstance().getSoundManager().play(new FlyingSound((MajoBroom) event.getEntityBeingMounted()));
+                        broom.hasPassenger = true;
+                        Minecraft.getInstance().getSoundManager().play(new FlyingSound(broom ));
 
                     }
                 }

@@ -3,7 +3,11 @@
   "package": "com.innky.majobroom.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "majobroom.refmap.json",
-  "mixins": ["MinecraftMixin"],
+  "mixins": [
+    "EntityMixin",
+    "MinecraftMixin",
+    "PlayerMixin"
+  ],
   "client": [
     "MinecraftMixin"
   ],
