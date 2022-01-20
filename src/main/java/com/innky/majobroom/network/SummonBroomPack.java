@@ -45,6 +45,8 @@ public class SummonBroomPack {
     }
     private void summonBroom(Player playerEntity,ItemStack itemStack){
         MajoBroom broomEntity = new MajoBroom(EntityTypeRegistry.majoBroom.get(), playerEntity.level);
+//        broomEntity.setYHeadRot(playerEntity.getYHeadRot());
+        broomEntity.setYRot(playerEntity.getYRot());
         broomEntity.setPos(playerEntity.getX(), playerEntity.getY(), playerEntity.getZ());
         broomEntity.setControlMode(itemStack.getOrCreateTag().getBoolean("controlMode"));
         playerEntity.level.addFreshEntity(broomEntity);
