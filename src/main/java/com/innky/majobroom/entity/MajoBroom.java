@@ -276,7 +276,7 @@ public class MajoBroom extends Boat {
     @Override
     public void tick() {
         Entity passenger = this.getFirstPassenger();
-        if (passenger instanceof Player player){
+        if (passenger instanceof Player player && !Config.SHIFT_TO_DISMOUNT.get()){
             player.setShiftKeyDown(false);
         }
         if (!level.isClientSide){
@@ -471,7 +471,7 @@ public class MajoBroom extends Boat {
 
     @Override
     public InteractionResult interact(Player player, InteractionHand hand) {
-       
+
         if(this.level.isClientSide){
             if(Minecraft.getInstance().options.keyShift.isDown()){
             }else {
