@@ -38,11 +38,13 @@ public class MajoWearableItem extends ArmorItem implements DyeableLeatherItem {
 
     @Override
     public @NotNull Object getRenderPropertiesInternal() {
+
         return new IItemRenderProperties() {
+            @org.jetbrains.annotations.Nullable
             @Override
-            public <A extends HumanoidModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, A _default) {
+            public HumanoidModel<?> getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
                 try {
-                    return (A) Modelinit.modelMap.get(itemStack.getDescriptionId().substring(15));
+                    return Modelinit.modelMap.get(itemStack.getDescriptionId().substring(15));
 
                 }catch (Exception e){
                     return null;
