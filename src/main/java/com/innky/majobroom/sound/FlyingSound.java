@@ -2,6 +2,7 @@ package com.innky.majobroom.sound;
 
 import com.innky.majobroom.entity.MajoBroom;
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
+import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -17,7 +18,7 @@ public class FlyingSound extends AbstractTickableSoundInstance {
 
 
     public FlyingSound(MajoBroom player) {
-        super(SoundEvents.ELYTRA_FLYING, SoundSource.PLAYERS);
+        super(SoundEvents.ELYTRA_FLYING, SoundSource.PLAYERS, SoundInstance.createUnseededRandom());
         this.broom = player;
         this.looping = true;
         this.delay = 0;
