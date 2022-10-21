@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientHandler {
     @SubscribeEvent
     public static void entityMountHandler(EntityMountEvent event){
-        if(event.getEntityBeingMounted() instanceof MajoBroom broom && event.getWorldObj().isClientSide) {
+        if(event.getEntityBeingMounted() instanceof MajoBroom broom && event.getLevel().isClientSide) {
             if (event.isMounting()) {
 
                 if(Minecraft.getInstance().player != null) {

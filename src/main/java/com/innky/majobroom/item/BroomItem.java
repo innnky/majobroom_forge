@@ -48,16 +48,6 @@ public class BroomItem extends Item {
     }
 
 
-    @Override
-    public ItemStack getContainerItem(ItemStack itemStack) {
-        return null;
-    }
-
-    @Override
-    public int getItemStackLimit(ItemStack stack) {
-        return 1;
-    }
-
 
 //    @Override
 //    public boolean updateItemStackNBT(CompoundTag nbt) {

@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -39,16 +39,10 @@ public class MajoWearableItem extends ArmorItem implements DyeableLeatherItem {
     @Override
     public @NotNull Object getRenderPropertiesInternal() {
 
-        return new IItemRenderProperties() {
-            @org.jetbrains.annotations.Nullable
+        return new IClientItemExtensions() {
             @Override
-            public HumanoidModel<?> getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
-                try {
-                    return Modelinit.modelMap.get(itemStack.getDescriptionId().substring(15));
-
-                }catch (Exception e){
-                    return null;
-                }
+            public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+                return Modelinit.modelMap.get(itemStack.getDescriptionId().substring(15));
             }
         };
     }

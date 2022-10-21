@@ -44,7 +44,7 @@ public class KeyBoardInput {
     public static boolean up = false;
     public static boolean down = false;
     @SubscribeEvent
-    public static void onKeyboardInput(InputEvent.KeyInputEvent event) {
+    public static void onKeyboardInput(InputEvent.Key event) {
         if (UP_KEY.getKey().getValue() == event.getKey()) {
             if (event.getAction() == 1){
                 up = true;
