@@ -46,20 +46,20 @@ public class KeyBoardInput {
     @SubscribeEvent
     public static void onKeyboardInput(InputEvent.Key event) {
         if (UP_KEY.getKey().getValue() == event.getKey()) {
-            if (event.getAction() == 1){
+            if (event.getAction() == GLFW.GLFW_PRESS){
                 up = true;
-            }else if (event.getAction() == 0){
+            }else if (event.getAction() == GLFW.GLFW_RELEASE){
                 up = false;
             }
         }
         if (DOWN_KEY.getKey().getValue() == event.getKey()) {
-            if (event.getAction() == 1){
+            if (event.getAction() == GLFW.GLFW_PRESS){
                 down = true;
-            }else if (event.getAction() == 0){
+            }else if (event.getAction() == GLFW.GLFW_RELEASE){
                 down = false;
             }
         }
-        if (SUMMON_KEY.getKey().getValue() == event.getKey() && event.getAction() == 1){
+        if (SUMMON_KEY.isDown() && event.getAction() == GLFW.GLFW_PRESS){
 
             Player playerEntity = Minecraft.getInstance().player;
             if (playerEntity!=null){
