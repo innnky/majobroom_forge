@@ -58,7 +58,7 @@ class CuriosBackpackHelper {
             LOGGER.info("[MajoBroom] ✓ getStacks() 方法找到");
             
             // IItemHandlerModifiable.getSlots() 和 getStackInSlot(int)
-            Class<?> itemHandlerClass = Class.forName("net.minecraftforge.items.IItemHandlerModifiable");
+            Class<?> itemHandlerClass = Class.forName("net.neoforged.neoforge.items.IItemHandlerModifiable");
             tempGetSlotsMethod = itemHandlerClass.getMethod("getSlots");
             tempGetStackInSlotMethod = itemHandlerClass.getMethod("getStackInSlot", int.class);
             LOGGER.info("[MajoBroom] ✓ IItemHandlerModifiable 方法找到");
@@ -102,21 +102,8 @@ class CuriosBackpackHelper {
         }
         
         try {
-            // CuriosApi.getCuriosInventory(player) 返回 LazyOptional<ICuriosItemHandler>
-            Object lazyOptional = getCuriosInventoryMethod.invoke(null, player);
-            
-            // 检查 LazyOptional 是否有值
-            Class<?> lazyOptionalClass = lazyOptional.getClass();
-            java.lang.reflect.Method isPresentMethod = lazyOptionalClass.getMethod("isPresent");
-            Boolean isPresent = (Boolean) isPresentMethod.invoke(lazyOptional);
-            
-            if (!isPresent) {
-                return backpacks;
-            }
-            
-            // 获取 ICuriosItemHandler
-            java.lang.reflect.Method resolveMethod = lazyOptionalClass.getMethod("resolve");
-            Object optionalHandler = resolveMethod.invoke(lazyOptional);
+            // CuriosApi.getCuriosInventory(player) 在 1.21.x 中直接返回 Optional<ICuriosItemHandler>
+            Object optionalHandler = getCuriosInventoryMethod.invoke(null, player);
             
             if (!(optionalHandler instanceof Optional)) {
                 return backpacks;

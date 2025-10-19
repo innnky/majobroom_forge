@@ -28,7 +28,7 @@ class CosmeticArmorCompat {
             tempGetCAStacksMethod = cosArmorAPIClass.getMethod("getCAStacks", java.util.UUID.class);
             
             // CAStacksBase 继承自 ItemStackHandler
-            Class<?> itemStackHandlerClass = Class.forName("net.minecraftforge.items.ItemStackHandler");
+            Class<?> itemStackHandlerClass = Class.forName("net.neoforged.neoforge.items.ItemStackHandler");
             tempGetStackInSlotMethod = itemStackHandlerClass.getMethod("getStackInSlot", int.class);
             
             available = true;
