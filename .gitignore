@@ -26,3 +26,4 @@ forge*changelog.txt
 ref_project
 .DS_Store
 *.log
+.vscode

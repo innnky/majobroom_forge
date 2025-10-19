@@ -433,13 +433,40 @@ public class BroomEntity extends Entity implements GeoEntity {
     }
     
     // ============ 位置同步（客户端接收服务端位置） ============
-    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps, boolean teleport) {
+    @Override
+    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps) {
         this.lerpX = x;
         this.lerpY = y;
         this.lerpZ = z;
         this.lerpYRot = yRot;
         this.lerpXRot = xRot;
         this.lerpSteps = 10; // 10步平滑插值
+    }
+    
+    // ============ 插值目标位置（1.21.1新增，用于客户端渲染） ============
+    @Override
+    public double lerpTargetX() {
+        return this.lerpSteps > 0 ? this.lerpX : this.getX();
+    }
+    
+    @Override
+    public double lerpTargetY() {
+        return this.lerpSteps > 0 ? this.lerpY : this.getY();
+    }
+    
+    @Override
+    public double lerpTargetZ() {
+        return this.lerpSteps > 0 ? this.lerpZ : this.getZ();
+    }
+    
+    @Override
+    public float lerpTargetXRot() {
+        return this.lerpSteps > 0 ? (float)this.lerpXRot : this.getXRot();
+    }
+    
+    @Override
+    public float lerpTargetYRot() {
+        return this.lerpSteps > 0 ? (float)this.lerpYRot : this.getYRot();
     }
     
     // ============ 服务端输入接收 ============
