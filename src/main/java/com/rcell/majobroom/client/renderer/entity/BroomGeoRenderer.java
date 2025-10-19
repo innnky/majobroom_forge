@@ -45,7 +45,7 @@ public class BroomGeoRenderer extends GeoEntityRenderer<BroomEntity> {
      */
     @Override
     protected void applyRotations(BroomEntity animatable, PoseStack poseStack, float ageInTicks, 
-                                  float rotationYaw, float partialTick) {
+                                  float rotationYaw, float partialTick, float nativeScale) {
         // 使用实体的实际旋转角度（带插值）
         float entityYaw = Mth.rotLerp(partialTick, animatable.yRotO, animatable.getYRot());
         

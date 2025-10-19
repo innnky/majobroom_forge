@@ -44,6 +44,11 @@ public class MajoHatItem extends ArmorItem implements GeoItem {
                 if (this.renderer == null) {
                     this.renderer = new MajoHatRenderer();
                 }
+                
+                // 必须调用 prepForRender 来设置当前实体和其他渲染参数
+                // 这样 GeoArmorRenderer 才能正确获取 currentEntity
+                this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
+                
                 return this.renderer;
             }
         });
