@@ -95,17 +95,41 @@ public abstract class BaseScreen extends Screen {
 
     @Override
     public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        // 渲染背景
-        renderBackground(graphics, mouseX, mouseY, partialTicks);
+        // 渲染菜单背景（背景纹理，继承自 Screen）
+        renderMenuBackground(graphics);
+        
+        // 渲染窗口背景（半透明遮罩）
+        renderWindowBackground(graphics, mouseX, mouseY, partialTicks);
         
         // 渲染窗口内容（由子类实现）
         renderWindow(graphics, mouseX, mouseY, partialTicks);
         
-        // 渲染控件
-        super.render(graphics, mouseX, mouseY, partialTicks);
+        // 直接渲染控件，不调用 super.render()，因为那会再次调用 renderBackground()
+        for (Renderable renderable : renderables) {
+            renderable.render(graphics, mouseX, mouseY, partialTicks);
+        }
         
         // 渲染工具提示
         renderWindowForeground(graphics, mouseX, mouseY, partialTicks);
+    }
+
+    /**
+     * 渲染窗口背景（半透明遮罩）
+     * 默认调用 renderBackground，子类可以重写以自定义背景
+     */
+    protected void renderWindowBackground(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
+        renderBackground(graphics, mouseX, mouseY, partialTicks);
+    }
+
+    /**
+     * 重写 renderBackground 以避免默认的高斯模糊效果
+     * 使用 fillGradient 渲染半透明遮罩
+     */
+    @Override
+    public void renderBackground(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
+        // 使用半透明的深灰色背景，不使用模糊效果
+        // 0x50 是透明度（约31%），0x101010 是深灰色
+        graphics.fillGradient(0, 0, this.width, this.height, 0x50_101010, 0x50_101010);
     }
 
     /**
