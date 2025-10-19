@@ -36,7 +36,7 @@ public class BroomItem extends Item {
             level.addFreshEntity(broom);
             
             // 播放音效和粒子效果
-            level.playSound(null, pos, net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_ELYTRA, SoundSource.PLAYERS, 1.0F, 1.0F);
+            level.playSound(null, pos, net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_ELYTRA.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
             BroomEntity.spawnBroomParticles(level, x, y, z);
             
             if (!player.getAbilities().instabuild) {

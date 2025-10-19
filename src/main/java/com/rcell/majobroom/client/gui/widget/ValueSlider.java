@@ -233,9 +233,9 @@ public class ValueSlider extends AbstractWidget {
     }
     
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
         if (isHovered) {
-            int change = (int) Math.signum(delta);
+            int change = (int) Math.signum(scrollY);
             setValue(value + change);
             playScrollSound(value);
             return true;

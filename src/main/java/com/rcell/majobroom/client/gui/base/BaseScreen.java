@@ -96,7 +96,7 @@ public abstract class BaseScreen extends Screen {
     @Override
     public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
         // 渲染背景
-        renderBackground(graphics);
+        renderBackground(graphics, mouseX, mouseY, partialTicks);
         
         // 渲染窗口内容（由子类实现）
         renderWindow(graphics, mouseX, mouseY, partialTicks);

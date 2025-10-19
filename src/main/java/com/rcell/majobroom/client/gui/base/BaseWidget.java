@@ -67,19 +67,11 @@ public abstract class BaseWidget extends AbstractWidget {
     }
 
     @Override
-    public void render(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        if (visible) {
-            isHovered = isMouseOver(mouseX, mouseY);
-            renderWidget(graphics, mouseX, mouseY, partialTicks);
-            wasHovered = isHoveredOrFocused();
-        }
-    }
-
-    @Override
     protected void renderWidget(@Nonnull GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
         beforeRender(graphics, mouseX, mouseY, partialTicks);
         doRender(graphics, mouseX, mouseY, partialTicks);
         afterRender(graphics, mouseX, mouseY, partialTicks);
+        wasHovered = isHoveredOrFocused();
     }
 
     /**

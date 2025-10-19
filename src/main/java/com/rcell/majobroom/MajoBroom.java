@@ -20,7 +20,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
-import software.bernie.geckolib.GeckoLib;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(MajoBroom.MODID)
@@ -48,14 +47,12 @@ public class MajoBroom
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         // 使用SERVER类型：配置存储在服务端并同步到客户端
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
-
-        // Initialize GeckoLib (client+server safe)
-        GeckoLib.initialize();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        event.enqueueWork(ModNetwork::register);
+        // 网络注册已移至ModNetwork的@EventBusSubscriber
+        // event.enqueueWork(ModNetwork::register);
         
         // 初始化模组兼容
         event.enqueueWork(CompatManager::init);

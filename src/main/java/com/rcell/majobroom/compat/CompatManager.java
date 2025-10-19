@@ -83,7 +83,7 @@ public class CompatManager {
         if (backpackCompat != null) {
             BackpackCompat.FindResult result = backpackCompat.findItemWithSource(player, item);
             if (!result.stack.isEmpty()) {
-                return new FindItemResult(result.stack, result.backpackUUID);
+                return new FindItemResult(result.stack, result.sourceBackpackUUID);
             }
         }
 
@@ -114,7 +114,7 @@ public class CompatManager {
         if (backpackCompat != null) {
             BackpackCompat.FindResult result = backpackCompat.removeItemFromBackpack(player, item);
             if (!result.stack.isEmpty()) {
-                return new FindItemResult(result.stack, result.backpackUUID);
+                return new FindItemResult(result.stack, result.sourceBackpackUUID);
             }
         }
 

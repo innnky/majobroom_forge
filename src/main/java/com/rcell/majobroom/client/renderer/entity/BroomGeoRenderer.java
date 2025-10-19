@@ -29,10 +29,9 @@ public class BroomGeoRenderer extends GeoEntityRenderer<BroomEntity> {
     @Override
     public void preRender(PoseStack poseStack, BroomEntity animatable, BakedGeoModel model, 
                          MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender,
-                         float partialTick, int packedLight, int packedOverlay, 
-                         float red, float green, float blue, float alpha) {
+                         float partialTick, int packedLight, int packedOverlay, int colour) {
         super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, 
-                       partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+                       partialTick, packedLight, packedOverlay, colour);
         
         // 应用服务端计算的浮动偏移（带插值）
         float floatOffset = animatable.getInterpolatedFloatOffset(partialTick);

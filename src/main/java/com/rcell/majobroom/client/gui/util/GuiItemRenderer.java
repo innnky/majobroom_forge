@@ -48,7 +48,7 @@ public class GuiItemRenderer {
         poseStack.translate(x, y, z);
         poseStack.scale(scale, scale, scale);
         // 重要：Y轴翻转，与 GuiGameElement 的 UIRenderHelper.flipForGuiRender 一致
-        poseStack.mulPoseMatrix(new Matrix4f().scaling(1, -1, 1));
+        poseStack.mulPose(new Matrix4f().scaling(1, -1, 1));
         
         // 渲染物品
         renderItemIntoGUI(poseStack, stack);

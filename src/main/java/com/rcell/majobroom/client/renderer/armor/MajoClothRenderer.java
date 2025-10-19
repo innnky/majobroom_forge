@@ -34,9 +34,9 @@ public class MajoClothRenderer extends GeoArmorRenderer<MajoRobeItem> {
     public void preRender(PoseStack poseStack, MajoRobeItem animatable, BakedGeoModel model,
                           @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer,
                           boolean isReRender, float partialTick, int packedLight, int packedOverlay,
-                          float red, float green, float blue, float alpha) {
+                          int colour) {
         super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick,
-                packedLight, packedOverlay, red, green, blue, alpha);
+                packedLight, packedOverlay, colour);
 
         // 处理 dress 节点的特殊运动
         GeoBone dressBone = this.model.getBone("dress").orElse(null);
