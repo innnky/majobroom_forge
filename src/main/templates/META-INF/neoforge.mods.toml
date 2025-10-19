@@ -94,6 +94,30 @@ description='''${mod_description}'''
     ordering="AFTER"
     side="BOTH"
 
+# Optional dependency for SophisticatedBackpacks integration
+[[dependencies.${mod_id}]]
+    modId="sophisticatedbackpacks"
+    type="optional"
+    versionRange="[3.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# Optional dependency for CosmeticArmorReworked integration
+[[dependencies.${mod_id}]]
+    modId="cosmeticarmorreworked"
+    type="optional"
+    versionRange="[1.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# Optional dependency for Curios integration
+[[dependencies.${mod_id}]]
+    modId="curios"
+    type="optional"
+    versionRange="[9.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares
 # that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
 # stop your mod loading on the server for example.
