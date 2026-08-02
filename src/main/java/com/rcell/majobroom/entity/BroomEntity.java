@@ -140,12 +140,6 @@ public class BroomEntity extends Entity implements GeoEntity {
     public void tick() {
         super.tick();
         
-        // 强制乘客保持站立姿势（防止shift键触发蹲伏视角下移）
-        Entity passenger = getFirstPassenger();
-        if (passenger instanceof Player player) {
-            player.setForcedPose(Pose.STANDING);
-        }
-        
         // 更新浮动动画（所有端都执行）
         updateFloatAnimation();
         
@@ -543,10 +537,24 @@ public class BroomEntity extends Entity implements GeoEntity {
     public void onPassengerTurned(@Nonnull Entity passenger) {
         this.clampRotation(passenger);
     }
+
+    @Override
+    protected void addPassenger(@Nonnull Entity passenger) {
+        super.addPassenger(passenger);
+
+        // 防止Shift刹车时切换为蹲伏姿势；服务端和客户端都需要设置。
+        if (passenger instanceof Player player) {
+            player.setForcedPose(Pose.STANDING);
+        }
+    }
     
     @Override
     protected void removePassenger(@Nonnull Entity passenger) {
         super.removePassenger(passenger);
+
+        if (passenger instanceof Player player) {
+            player.setForcedPose(null);
+        }
         
         // 清空输入状态
         this.inputLeft = false;
